@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register or Login</title>
+</head>
+<body>
+    
+    <style>
+
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            background: #f4f4f4;
+        }
+
+        .loginField 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: white;
+            padding: 20px;
+            width: 600px;
+            height: 400px;
+        }
+
+        .btn
+        {
+            background-color: blue;
+            border: 1px solid blue;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 310px;
+            height: 40px;
+            width: 100%;
+            transition-duration: 250ms;
+        }
+
+        .btn2
+        {
+            background-color: blue;
+            border: 1px solid blue;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 360px;
+            left: 120px;
+            height: 35px;
+            width: 300px;
+            transition-duration: 250ms;
+        }
+
+        .btn3
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: orange;
+            border: 1px solid orange;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 700px;
+            left: 625px;
+            height: 30px;
+            width: 300px;
+            transition-duration: 250ms;
+        }
+
+        #idBtn:hover
+        {
+            border-radius: 20px;
+            height: 40px;
+        }
+
+        #idBtn2:hover
+        {
+            border-radius: 20px;
+            height: 35px;
+        }
+
+        #idBtn3:hover
+        {
+            border-radius: 20px;
+            height: 35px;
+        }
+
+        input
+        {
+            border-radius: 5px;
+            color: black;
+            background-color: white;
+            font-size: 15px;
+            padding: 10px;
+            margin: 10px 0;
+            height: 30px;
+            width: 500px;
+            bottom: 1px;
+            transition-duration: 100ms;
+        }
+
+        .textmail
+        {
+            position: absolute;
+            bottom: 27.5%;
+            color: red;
+            font-size: 15px;
+        }
+
+        .textpw
+        {
+            position: absolute;
+            bottom: -8px;
+            color: red;
+            font-size: 15px;
+        }
+
+        .form
+        {
+            position: absolute;
+            bottom: 42%;
+        }
+
+        .title
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+
+    <div class="loginField">
+        <form id="idForm" class="form">
+            <h2 style="font-size: 40px; letter-spacing: 0px;" class="title" id="idTitle">Register</h2>
+            <input id="idEmail" type="email" name="Email" class="mail" placeholder="Email...">
+            <p class="textmail" id="idText"></p>
+            <p><input id="idPw" type="password" name="Password" class="password" placeholder="Password..."></p>
+            <p class="textpw" id="idShort"></p>
+            <p><button id="idBtn" class="btn" onclick="send()">Register</button></p>
+            <p><button id="idBtn2" class="btn2">Already have an account?</button></p>
+        </form>
+    </div>
+
+    <script>
+
+        let login = true
+        let title = document.getElementById("idTitle")
+        let btn = document.getElementById("idBtn")
+        let btn2 = document.getElementById("idBtn2")
+        let email = document.getElementById("idEmail");
+        let textMail = document.getElementById("idText");
+        let pw = document.getElementById("idPw");
+        let textPw = document.getElementById("idShort");
+
+
+        document.getElementById("idBtn2").addEventListener("click", function(event)
+        {
+            event.preventDefault()
+            if(login)
+            {
+                email.value = ""
+                pw.value = ""
+                textMail.innerHTML = ""
+                textPw.innerHTML = ""
+                email.style.backgroundColor = "white"
+                pw.style.backgroundColor = "white"
+                title.innerHTML = "Log into your account"
+                btn.innerHTML = "Login"
+                btn2.innerHTML = "No account yet?"
+            }
+            else
+            {
+                location.reload()
+            }
+            login = !login
+        }
+        )
+
+        function send()
+        {
+            if(email.value.includes("@") && pw.value.length >= 8)
+            {
+                location.replace("(3) success.html")
+            }
+        }
+
+        email.addEventListener("blur", function()
+        {
+            if(email.value.trim())
+            {
+                if(email.value.includes("@"))
+                    validMail();
+                if(!email.value.includes("@"))
+                    invalidMail();
+            }
+        }
+        )
+
+        pw.addEventListener("blur", function()
+        {
+            if(pw.value.trim())
+            {
+                if(pw.value.length >= 8)
+                    validPw();
+                if(pw.value.length < 8)
+                    invalidPw();
+            }
+        }
+        )
+
+        function validMail()
+        {
+            email.style.backgroundColor = "lightgreen";
+            textMail.innerHTML = "";
+        }
+
+        function invalidMail()
+        {
+            email.style.backgroundColor = "#FF3131";
+            textMail.innerHTML = 'Invalid input. Maybe you forgot the "@"';
+        }
+
+        function validPw()
+        {
+            pw.style.backgroundColor = "lightgreen";
+            textPw.innerHTML = "";
+        }
+
+        function invalidPw()
+        {
+            pw.style.backgroundColor = "#FF3131";
+            textPw.innerHTML = `The password must be at least <span style='font-weight: bold;'>&nbsp;8&nbsp;</span> characters long.`;
+        }
+
+   </script>
+
+</body>
+</html>
+

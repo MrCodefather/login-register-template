@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your profile</title>
+</head>
+
+    <style>
+
+        body
+        {
+            background-color: #f4f4f4;
+        }
+
+        .h1
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 5vh;
+            font-size: 100px;
+        }
+
+        .div
+        {
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid white;
+            display: flex;
+            height: 500px;
+            width: 1400px;
+        }
+
+        div
+        {
+            color: red;
+            margin-left: 10px;
+        }
+
+        input
+        {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            height: 40px;
+            width: 200px;
+            margin-left: 10px;
+            margin-top: 10px;
+            transition-duration: 100ms;
+        }
+
+        input:hover
+        {
+            border: 1px solid blue;
+        }
+
+        button
+        {
+            position: absolute;
+            background-color: blue;
+            border: 1px solid blue;
+            border-radius: 5px;
+            color: white;
+            width: 206px;
+            height: 30px;
+            cursor: pointer;
+            left: 82.5px;
+            transition-duration: 250ms;
+        }
+
+        button:hover
+        {
+            border-radius: 15px;
+        }
+
+        .invld1
+        {
+            position: absolute;
+            top: 220px;
+        }
+
+        .invld2
+        {
+            position: absolute;
+            top: 300px;
+        }
+
+        .invld3
+        {
+            position: absolute;
+            top: 370px;
+        }
+
+    </style>
+
+<body>
+    
+    <h1 class="h1">Your profile</h1>
+
+    <center><p><div class="div">
+        <form>
+            <input id="idName" placeholder="Name..."><div id="idIvld1" style="margin-top: 10px;"></div>
+            <p><input id="idUsername" placeholder="Username..."><div id="idIvld2"></div></p>
+            <p><input id="idAge" placeholder="Age..." type="number" min="12" max="100"><div id="idIvld3"></div></p>
+            <p><button id="idBtn">Save</button></p>
+        </form>
+    </div></p></center>
+
+    <script src="user.js"></script>
+
+</body>
+</html>
